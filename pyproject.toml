@@ -1,0 +1,50 @@
+[project]
+name = "so101-ai-sorter"
+version = "0.1.0"
+description = "PAI final assignment: SO-101 arm stacks a block pyramid in Genesis using vision (OWLv2) + language (LLM) AI"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "genesis-world>=0.3.3",
+    "torch>=2.7",
+    "transformers>=4.46",
+    "pillow",
+    "numpy",
+    "imageio[ffmpeg]",
+    "scipy",
+    "opencv-python",
+    "pydantic>=2",
+    "anthropic>=0.70",
+    "ollama>=0.6.3",
+    "pyopenjtalk-plus>=0.4.1.post10",
+]
+
+[tool.uv]
+package = false
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.0.0",
+    "ruff>=0.14.4",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+exclude = ["outputs", "private", "assets"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+per-file-ignores = {"main.py" = ["E402"], "scripts/debug_pick.py" = ["E402"]}
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true

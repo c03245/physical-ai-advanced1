@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+.ruff_cache/
+outputs/
+# 提出用のレポート・課題資料・個人メモ（公開しない）
+private/
